@@ -1,0 +1,23 @@
+<!--<p>
+  {{productName}}
+</p>
+<span [innerHTML]='productType'></span>-->
+<!--<div [ngClass]="'odd'">Show Class color</div>-->
+<div class="card" style="width:25rem;padding: .2rem;margin: .5rem;">
+  
+  <img [ngStyle]="{padding:'10px'}" class="card-img-top" src="../../assets/tandoor_chicken.jpg" style="width:23rem;height: 16rem">
+  
+  
+  <div class="card-body">
+    <h4 class="card-title">{{element.foodItemName}}</h4>
+    <p [ngStyle]="{color:'grey'}" class="card-text"> {{element.foodDsc}} </p>
+    <p> Quantity:
+      <span class="badge badge-pill badge-primary">{{element.qty}} </span>
+    </p>Status : <span class="badge badge-pill badge-success">{{element.status}} </span>
+
+    <div class="btn group  btn-group-sm">
+      <button [ngStyle]="{margin:'10px'}" class="btn btn-primary" (click)="addToCart(element)">Add to Cart </button>
+      <!-- <button class="btn btn-primary">Product Details</button> -->
+    </div>
+  </div>
+</div>

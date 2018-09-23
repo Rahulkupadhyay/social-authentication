@@ -1,0 +1,46 @@
+<form [formGroup]="registerForm">
+  <div class="form-group" >
+    <label for="fname">First Name</label>
+    <input type="text" formControlName="fName" class="form-control" name="fname">
+    <!-- <span [ngStyle]="{color:'red'}" *ngIf="registerForm.get('fName').touched && !registerForm.get('fName').valid">
+        Invalid first name
+      </span> -->
+      <app-validation-message [field]="{control:registerForm.get('fName'), name:'First name'}"></app-validation-message>
+  </div>
+  <div class="form-group">
+    <label for="fname">Last Name</label>
+    <input type="text" class="form-control" formControlName="lName" name="fname">
+    <span [ngStyle]="{color:'red'}" *ngIf="registerForm.get('lName').touched && !registerForm.get('lName').valid">
+        Invalid last name
+    </span>
+  </div>
+  <div class="form-group">
+      <label for="fname">Age</label>
+      <input type="text" class="form-control" formControlName="age" name="age">
+      <span [ngStyle]="{color:'red'}" *ngIf="registerForm.get('age').touched &&
+       registerForm.get('age').hasError('ageRange')">
+          Invalid age
+      </span>
+    </div>
+  <div formGroupName="emailGroup">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" formControlName="email" name="email">
+      <span [ngStyle]="{color:'red'}" *ngIf="registerForm.get('emailGroup.email').touched &&
+       !registerForm.get('emailGroup.email').valid">
+          Invalid email
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="cnfemail">Confirm Email:</label>
+      <input type="email" class="form-control" formControlName="cnfEmail" name="cnfemail">
+      <span [ngStyle]="{color:'red'}" 
+      *ngIf="registerForm.get('emailGroup.cnfEmail').touched &&
+        registerForm.get('emailGroup').hasError('match')">
+          Email does not match
+      </span>
+      <!-- <p>{{registerForm.get('emailGroup').errors.match}}</p> -->
+    </div>
+  </div>
+  <button type="submit" class="btn btn-default">Save</button>
+</form>

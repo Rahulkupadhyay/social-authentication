@@ -1,0 +1,32 @@
+<div [ngStyle]="{padding:'10px'}">
+    <h3 #header>Create Food Items</h3>
+    <input #fname type="text" name="foodItemName" [(ngModel)]="foodItemName" 
+        placeholder="Name" />
+    <input type="text" name="foodDsc" [(ngModel)]="foodDsc" placeholder="Description" />
+    <input type="text" name="quantity" [(ngModel)]="qty" placeholder="quantity" />
+    <input type="text" name="status" [(ngModel)]="status" placeholder="status" />
+    <input #url type="text" name="imageUrl" [(ngModel)]="imageUrl" placeholder="image URL" />
+    <button [disabled]='!isAllowed' [ngStyle]="{margin:'10px'}" class='btn btn-success' (click)="onCreateProduct(url.value)">
+        Create Product
+    </button>
+</div>
+
+<div [ngStyle]="{padding:'10px'}" *ngIf='isfoodItemCreated; else noFoodItem'>
+    <span> Product Created : {{productCreated}}</span>
+    <div>
+      Message: <span [ngStyle]="{color:'green'}">{{message}}</span><br>  Food Items Count: {{cartCount}}
+   </div>
+</div>
+<!--to execute else part-->
+<ng-template #noFoodItem>
+    <div [ngStyle]="{padding:'10px'}" id='noFoodItem'>
+        No food item created
+    </div>
+</ng-template>
+
+
+<div [ngStyle]="{padding:'10px'}" class="row">
+    <div class="col md-4" *ngFor='let foodItem of foodItems'> 
+        <app-food-item [element]='foodItem' (addToCartEvent)="recieveCartEvent($event)"></app-food-item>
+    </div> 
+</div>
