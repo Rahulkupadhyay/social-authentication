@@ -7,7 +7,7 @@ import { Directive, ElementRef, OnInit, HostBinding, HostListener, Input } from 
 export class HighlightDirective implements OnInit {
    @HostBinding('style.color') bgc: string;
    @Input() defaultColor ;
-  constructor(private el: ElementRef) { }
+  constructor() { }
  
   ngOnInit(): void {
     //  this.el.nativeElement.style.color = 'Red';

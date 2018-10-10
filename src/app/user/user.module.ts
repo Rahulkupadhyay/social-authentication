@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { UserRoutingModule } from './user-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -12,6 +11,7 @@ import {
   FacebookLoginProvider,
   LinkedinLoginProvider,
 } from "angular-6-social-login-v2";
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 // Configs 
 export function getAuthServiceConfigs() {
@@ -40,7 +40,8 @@ export function getAuthServiceConfigs() {
   imports: [
     UserRoutingModule,
     SharedModule,
-    SocialLoginModule
+    SocialLoginModule,
+    NgxCaptchaModule
   ],
   providers: [
     {
